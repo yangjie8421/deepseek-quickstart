@@ -2,6 +2,7 @@
 docker run -d \
   -p 3000:8080 \
   -p 11434:11434 \
+  --gpus=all \
   -v ollama:/root/.ollama \
   -v open-webui:/app/backend/data \
   -e OLLAMA_HOST=0.0.0.0 \
