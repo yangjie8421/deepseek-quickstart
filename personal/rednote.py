@@ -184,7 +184,7 @@ def generate_rednote(product_name: str, tone_style: str = "活泼甜美", max_it
                 tool_choice="auto" # 允许模型自动决定是否使用工具
             )
 
-            print(f"message：{0}",messages)
+            # print(f"message：{0}",messages)
 
             response_message = response.choices[0].message
 
