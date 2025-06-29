@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇游戏</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        #game-container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #game-canvas {
+            border: 1px solid #333;
+            background-color: #000;
+            display: block;
+            margin: 0 auto;
+        }
+        #score {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .controls {
+            margin: 15px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #game-over {
+            display: none;
+            margin-top: 20px;
+        }
+        #game-over h2 {
+            color: #f44336;
+        }
+        #difficulty {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .mobile-controls {
+            display: none;
+            margin-top: 10px;
+        }
+        .mobile-row {
+            display: flex;
+            justify-content: center;
+        }
+        .mobile-btn {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            font-size: 20px;
+            background-color: #2196F3;
+        }
+        @media (max-width: 600px) {
+            .mobile-controls {
+                display: block;
+            }
+            #game-canvas {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>贪吃蛇游戏</h1>
+        <div id="score">得分: 0</div>
+        <div class="controls">
+            <select id="difficulty">
+                <option value="200">简单</option>
+                <option value="150" selected>中等</option>
+                <option value="100">困难</option>
+            </select>
+            <button id="start-btn">开始游戏</button>
+            <button id="pause-btn" style="display: none;">暂停</button>
+        </div>
+        <canvas id="game-canvas" width="400" height="400"></canvas>
+        
+        <!-- 移动端控制按钮 -->
+        <div class="mobile-controls">
+            <div class="mobile-row">
+                <button class="mobile-btn" data-direction="up">↑</button>
+            </div>
+            <div class="mobile-row">
+                <button class="mobile-btn" data-direction="left">←</button>
+                <button class="mobile-btn" data-direction="right">→</button>
+            </div>
+            <div class="mobile-row">
+                <button class="mobile-btn" data-direction="down">↓</button>
+            </div>
+        </div>
+        
+        <div id="game-over">
+            <h2>游戏结束!</h2>
+            <p>最终得分: <span id="final-score">0</span></p>
+            <p>最高分: <span id="high-score">0</span></p>
+            <button id="restart-btn">重新开始</button>
+        </div>
+    </div>
+    <script src="snake.js"></script>
+</body>
+</html>
