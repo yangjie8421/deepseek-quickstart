@@ -4,8 +4,7 @@ import httpx
 from mcp.server.fastmcp import FastMCP
 from settings import GD_API_BASE,GD_API_KEY
 
-# 1. 初始化 FastMCP 服务器
-# 创建一个名为 "weather" 的服务器实例。这个名字有助于识别这套工具。
+# 创建一个名为 "chinaweather" 的服务器实例
 mcp = FastMCP("chinaweather")
 
 @mcp.tool()
