@@ -2,14 +2,14 @@ from typing import Any
 import asyncio
 import httpx
 from mcp.server.fastmcp import FastMCP
-from settings import GD_API_BASE_URL, GD_API_KEY
+from settings import GD_API_BASE,GD_API_KEY
 
 # 1. 初始化 FastMCP 服务器
 # 创建一个名为 "weather" 的服务器实例。这个名字有助于识别这套工具。
 mcp = FastMCP("chinaweather")
 
 @mcp.tool()
-async def get_weather(city: str, extensions: str = 'base'，timeout:int = 30) -> dict:
+async def get_weather(city: str, extensions: str = 'base',timeout:float  = 30.0) -> dict:
     """
     异步获取高德天气API数据
     
@@ -30,10 +30,10 @@ async def get_weather(city: str, extensions: str = 'base'，timeout:int = 30) ->
     }
     
     try:
-        async with httpx.AsyncClient(timeout) as client:
+        async with httpx.AsyncClient(timeout=timeout) as client:
             
             # 发起GET请求，获取天气数据
-            response = await client.get(GD_API_BASE_URL, params=params)
+            response = await client.get(GD_API_BASE, params=params)
 
             # 检查HTTP状态码，非正常响应则抛出异常
             response.raise_for_status()
@@ -50,4 +50,5 @@ async def get_weather(city: str, extensions: str = 'base'，timeout:int = 30) ->
 
 if __name__ == "__main__":
     mcp.run(transport='stdio')
+    # weather_data = asyncio.get_event_loop().run_until_complete(get_weather(city="北京"))
     
